@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dane samochodu</title>
+</head>
+<body>
+<h1>Lista samochodów</h1>
+<table>
+<tr th:each="car: ${cars}">
+    <td th:text=" 'Marka: ' +${car.brand}"/>
+    <td th:text=" 'Model: ' +${car.model}"/>
+    <td th:text=" 'Kolor: ' +${car.colour}"/>
+    <td th:text=" 'Data produkcji: ' +${car.dateOfProduction}"/>
+    <td th:text=" 'VIN: ' +${car.vin}"/>
+    <td><a href="/removeCar" th:href="@{/deleteCar(carId=${car.id})}">Usuń samochód</a> </td>
+    <td><a href="/editCar" th:href="@{/editCar(carId=${car.id})}">Edytuj samochód</a> </td>
+</tr>
+</table>
+<a href="/">Powrót do MENU</a>
+</body>
+</html>
