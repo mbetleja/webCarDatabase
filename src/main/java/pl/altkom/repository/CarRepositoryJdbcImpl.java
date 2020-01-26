@@ -21,7 +21,7 @@ public class CarRepositoryJdbcImpl implements CarRepository {
     @Override
     public void addCar(Car car) {
         jdbc.update("INSERT INTO carDatabase (brand, model, colour, dateOfProduction, vin) VALUES (?,?,?,?,?)",
-                car.getBrand(), car.getModel(), car.getColour(), car.getDateOfProduction(), car.getVin());
+                car.getBrand(), car.getModel(), car.getColour(), car.getYearOfProduction(), car.getVin());
 
     }
     @Override
@@ -35,7 +35,7 @@ public class CarRepositoryJdbcImpl implements CarRepository {
                 car.setBrand(resultSet.getString(2));
                 car.setModel(resultSet.getString(3));
                 car.setColour(resultSet.getString(4));
-                car.setDateOfProduction(resultSet.getString(5));
+                car.setYearOfProduction(resultSet.getString(5));
                 car.setVin(resultSet.getString(6));
                 return car;
             }
@@ -64,7 +64,7 @@ public class CarRepositoryJdbcImpl implements CarRepository {
                 newCar.getBrand(),
                 newCar.getModel(),
                 newCar.getColour(),
-                newCar.getDateOfProduction(),
+                newCar.getYearOfProduction(),
                 newCar.getVin(),
                 newCar.getId());
         jdbc.update(EDIT_CAR);
