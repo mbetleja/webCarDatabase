@@ -10,7 +10,7 @@ public interface CarRepository {
 
     void editCar(Car car);
 
-    void deleteCar(int car);
+    void deleteCar(Long car);
 
     List<Car> showAll();
 }
