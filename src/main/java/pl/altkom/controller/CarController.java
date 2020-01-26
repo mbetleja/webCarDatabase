@@ -28,12 +28,12 @@ public class CarController {
 
     @PostMapping("/addCar")
     public String addForm(@Valid Car car, BindingResult bindingResult) {
-        carDao.addCar(car);
-        System.out.printf("%s, %s, %s, %s %s%n", car.getBrand(), car.getModel(), car.getColour(), car.getYearOfProduction()
-                , car.getVin());
         if (bindingResult.hasErrors()){
             return "newCarForm";
         }
+        carDao.addCar(car);
+        System.out.printf("%s, %s, %s, %s %s%n", car.getBrand(), car.getModel(), car.getColour(), car.getYearOfProduction()
+                , car.getVin());
         return "showNewCar";
     }
 

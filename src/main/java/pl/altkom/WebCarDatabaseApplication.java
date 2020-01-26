@@ -10,6 +10,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 @SpringBootApplication
 public class WebCarDatabaseApplication {
 
+
 	public static void main(String[] args) {
 		SpringApplication.run(WebCarDatabaseApplication.class, args);
 	}

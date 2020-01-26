@@ -12,12 +12,13 @@
     <p th:if="${#fields.hasErrors('model')}" th:errors="*{model}">model error</p>
     <p>Kolor:<input th:field="*{colour}" type="text"></p>
     <p th:if="${#fields.hasErrors('colour')}" th:errors="*{colour}">colour error</p>
-    <p>Rok produkcji:<input th:field="*{yearOfProduction}" type="text"></p>
+    <p>Rok produkcji:<input th:field="*{yearOfProduction}" type="date"></p>
     <p th:if="${#fields.hasErrors('yearOfProduction')}" th:errors="*{yearOfProduction}">yearOfProduction error</p>
     <p>Numer VIN:<input th:field="*{vin}" type="text"></p>
     <p th:if="${#fields.hasErrors('vin')}" th:errors="*{vin}">vin error</p>
     <p><input type="submit"></p>
-</form>
 
+</form>
+<a href="/">Powrót do MENU</a>
 </body>
 </html>

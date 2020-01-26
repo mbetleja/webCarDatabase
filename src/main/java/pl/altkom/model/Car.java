@@ -1,9 +1,12 @@
 package pl.altkom.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 
 public class Car {
 
@@ -17,9 +20,9 @@ public class Car {
     @NotNull
     @Size(min = 2, max = 20, message = "{name.correctlenght}")
     private String colour;
-    @NotNull
-    @Size(min = 4, max = 4, message = "{year.correctlenght}")
-    private String yearOfProduction;
+    @NotNull(message = "{date.info}")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate yearOfProduction;
     @NotNull
     @Size(min = 17, max = 17, message = "{vin.correctlenght}")
     private String vin;
@@ -28,7 +31,7 @@ public class Car {
     public Car() {
     }
 
-    public Car(String brand, String model, String colour, String yearOfProduction, String vin) {
+    public Car(String brand, String model, String colour, LocalDate yearOfProduction, String vin) {
         this.brand = brand;
         this.model = model;
         this.colour = colour;
@@ -36,7 +39,7 @@ public class Car {
         this.vin = vin;
     }
 
-    public Car(int id, String brand, String model, String colour, String yearOfProduction, String vin) {
+    public Car(int id, String brand, String model, String colour, LocalDate yearOfProduction, String vin) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -77,11 +80,11 @@ public class Car {
         this.colour = colour;
     }
 
-    public String getYearOfProduction() {
+    public LocalDate getYearOfProduction() {
         return yearOfProduction;
     }
 
-    public void setYearOfProduction(String yearOfProduction) {
+    public void setYearOfProduction(LocalDate yearOfProduction) {
         this.yearOfProduction = yearOfProduction;
     }
 
