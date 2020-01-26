@@ -1,31 +1,47 @@
 package pl.altkom.model;
 
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Car {
 
     private int id;
+    @NotNull
+    @Size(min = 2, max = 20, message = "{name.correctlenght}")
     private String brand;
+    @NotNull
+    @Size(min = 2, max = 20, message ="{name.correctlenght}" )
     private String model;
+    @NotNull
+    @Size(min = 2, max = 20, message = "{name.correctlenght}")
     private String colour;
-    private String dateOfProduction;
+    @NotNull
+    @Size(min = 4, max = 4, message = "{year.correctlenght}")
+    private String yearOfProduction;
+    @NotNull
+    @Size(min = 17, max = 17, message = "{vin.correctlenght}")
     private String vin;
+
 
     public Car() {
     }
 
-    public Car(String brand, String model, String colour, String dateOfProduction, String vin) {
+    public Car(String brand, String model, String colour, String yearOfProduction, String vin) {
         this.brand = brand;
         this.model = model;
         this.colour = colour;
-        this.dateOfProduction = dateOfProduction;
+        this.yearOfProduction = yearOfProduction;
         this.vin = vin;
     }
 
-    public Car(int id, String brand, String model, String colour, String dateOfProduction, String vin) {
+    public Car(int id, String brand, String model, String colour, String yearOfProduction, String vin) {
         this.id = id;
         this.brand = brand;
         this.model = model;
         this.colour = colour;
-        this.dateOfProduction = dateOfProduction;
+        this.yearOfProduction = yearOfProduction;
         this.vin = vin;
     }
 
@@ -61,12 +77,12 @@ public class Car {
         this.colour = colour;
     }
 
-    public String getDateOfProduction() {
-        return dateOfProduction;
+    public String getYearOfProduction() {
+        return yearOfProduction;
     }
 
-    public void setDateOfProduction(String dateOfProduction) {
-        this.dateOfProduction = dateOfProduction;
+    public void setYearOfProduction(String yearOfProduction) {
+        this.yearOfProduction = yearOfProduction;
     }
 
     public String getVin() {
