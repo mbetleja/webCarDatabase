@@ -11,5 +11,16 @@
 
 <a href="/showAll"><p>Pokaż samochody</p></a>
 
+<h2>Raporty</h2>
+<p><a href="showAllCars.html" th:href="@{carReport(reportId=1)}">Pojazdy marki Audi</a></p>
+<p><a href="showAllCars.html" th:href="@{carReport(reportId=2)}">Pojazdy starsze niż 10 lat</a></p>
+<p><a href="showAllCars.html" th:href="@{carReport(reportId=3)}">Pojazdy innej marki niż Volkswagen, Audi, Skoda, Seat</a></p>
+<p><a href="showAllCars.html" th:href="@{carReport(reportId=4)}">Pojazdy marki Ferrari w kolorze czerwonym</a></p>
+<p><a href="showAllCars.html" th:href="@{carReport(reportId=5)}">Pojazdy marki Ford posortowane od najnowszego</a></p>
+<p><a href="showAllCars.html" th:href="@{carReport(reportId=6)}">Pojazdy marki Peugeot w kolorze innym niż srebrny</a></p>
+<p><a href="showAllCars.html" th:href="@{/search}">Pojazdy o określonej marce, modelu i kolorze - wybór przez formularz</a></p>
+
+
+
 </body>
 </html>

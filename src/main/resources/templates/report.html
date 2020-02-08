@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Raport</title>
+</head>
+<body>
+<h1>Lista samochodów</h1>
+<table>
+    <p th:text="${reportData.reportTitle}">Tytuł raportu</p>
+<tr th:each="car: ${reportData.getReportData()}">
+    <td th:text=" 'Marka: ' +${car.brand}"/>
+    <td th:text=" 'Model: ' +${car.model}"/>
+    <td th:text=" 'Kolor: ' +${car.colour}"/>
+    <td th:text=" 'Data produkcji: ' +${car.yearOfProduction}"/>
+    <td th:text=" 'VIN: ' +${car.vin}"/>
+</tr>
+</table>
+<p th:text="${reportData.numberOfRecords}">Ilość rekordów</p>
+<a href="/">Powrót do MENU</a>
+</body>
+</html>

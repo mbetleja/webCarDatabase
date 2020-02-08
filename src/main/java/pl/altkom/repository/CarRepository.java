@@ -13,4 +13,6 @@ public interface CarRepository {
     void deleteCar(Long car);
 
     List<Car> showAll();
+
+    List<Car> showUserCar();
 }
