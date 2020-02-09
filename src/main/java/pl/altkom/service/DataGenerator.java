@@ -4,7 +4,9 @@ package pl.altkom.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.altkom.model.Car;
+import pl.altkom.model.Driver;
 import pl.altkom.repository.CarRepositoryDataJpaImpl;
+import pl.altkom.repository.DriverRepositoryDataJpaImpl;
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
@@ -14,6 +16,9 @@ public class DataGenerator {
 
     @Autowired
     private CarRepositoryDataJpaImpl dao;
+
+    @Autowired
+    private DriverRepositoryDataJpaImpl driverDao;
 
     @PostConstruct
     public void createSomeData(){
@@ -28,13 +33,17 @@ public class DataGenerator {
         dao.save(new Car("Audi", "A4", "Czarny", LocalDate.of(2007,4,9), "65754754547676474"));
         dao.save(new Car("Skoda", "Fabia", "Niebieski", LocalDate.of(2008,9,12), "28463786455647388"));
         dao.save(new Car("Seat", "Ibiza", "Żółty", LocalDate.of(1995,1,19), "23462837528777733"));
-        dao.save(new Car("Audi", "A4", "Czarny", LocalDate.of(2004,12,10), "72648473548590483"));
+        dao.save(new Car("Audi", "A6", "Srebrny", LocalDate.of(2004,12,10), "72648473548590483"));
         dao.save(new Car("Ford", "Mustang", "Zielony", LocalDate.of(2019,10,3), "82564894762374893"));
         dao.save(new Car("Ford", "Everest", "Srebrny", LocalDate.of(2005,9,8), "82564894762374893"));
         dao.save(new Car("Ford", "Focus", "Niebieski", LocalDate.of(1990,1,10), "82564894762374893"));
 
-    }
+        driverDao.save(new Driver("Jan", "Kowalski"));
+        driverDao.save(new Driver("Maciej", "Nowak"));
+        driverDao.save(new Driver("John", "Smith"));
+        driverDao.save(new Driver("Dawid", "Wiśniewski"));
 
+    }
 
 
 

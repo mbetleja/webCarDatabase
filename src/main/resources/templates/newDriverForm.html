@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nowy kierowca</title>
+</head>
+<body>
+<form method="post" action="#" th:object="${driver}" th:action="@{/addDriver}">
+    <p>Imię:<input th:field="*{firstName}" type="text"></p>
+    <p>Nazwisko:<input th:field="*{lastName}" type="text"></p>
+
+    <p><input type="submit"></p>
+
+</form>
+<a href="/">Powrót do MENU</a>
+</body>
+</html>

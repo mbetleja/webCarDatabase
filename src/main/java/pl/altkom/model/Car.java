@@ -6,6 +6,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "baza_samochodow")
 public class Car {
@@ -34,6 +36,14 @@ public class Car {
     @Size(min = 17, max = 17, message = "{vin.correctlenght}")
     private String vin;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "car_id")
+    private List<Route> routes = new ArrayList<>(0);
+
+    public void addRoute(final Route route){
+        this.routes.add(route);
+    }
+    
 
     public Car() {
     }

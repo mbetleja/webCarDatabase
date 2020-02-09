@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dane samochodu</title>
+    <style>
+        table, tr, th, td {
+            border:1px cornflowerblue solid;
+        }
+    </style>
+</head>
+<body>
+<h1>Lista kierowców</h1>
+<table>
+<tr th:each="driver: ${driverList}">
+    <td th:text="${driver.id}"/>
+    <td th:text=" 'Imię: ' +${driver.firstName}"/>
+    <td th:text=" 'Nazwisko: ' +${driver.lastName}"/>
+</tr>
+</table>
+<br>
+<a href="/">Powrót do MENU</a>
+</body>
+</html>

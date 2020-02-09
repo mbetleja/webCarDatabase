@@ -52,10 +52,6 @@ public class CarReportFactory {
 
                 break;
 
-            case 7:
-
-                break;
-
 
             default:{
                 throw new UnsupportedOperationException("Nieznany rodzaj raportu!");

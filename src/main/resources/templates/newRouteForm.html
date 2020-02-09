@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nowa trasa</title>
+</head>
+<body>
+<form method="post" action="#" th:object="${route}" th:action="@{/addRoute}">
+    <h1>Tworzenie nowej trasy</h1>
+
+    <p>Nazwa trasy: <input th:field="*{routeName}" type="text"></p>
+    <br>
+    <p>Adres początkowy: <input th:field="*{startAddress}" type="text"></p>
+    <p>Data rozpoczęcia: <input th:field="*{startDate}" type="date"></p>
+    <p>Czas rozpoczęcia: <input th:field="*{plannedStartTime}" type="time"></p>
+    <br>
+    <p>Adres docelowy: <input th:field="*{endAddress}" type="text"></p>
+    <p>Data zakończenia: <input th:field="*{endDate}" type="date"></p>
+    <p>Czas zakończenia: <input th:field="*{plannedEndTime}" type="time"></p>
+    <br>
+    <h1>Dodaj kierowcę</h1>
+    <p><select th:field="*{driverId}">
+    <option value="">WYBIERZ</option>
+    <option th:each="kierowca : ${allDrivers}"
+            th:value="${kierowca.id}"
+            th:utext="${kierowca.lastName}"/>
+    </select></p>
+    <br>
+    <h1>Dodaj samochód</h1>
+    <p><select th:field="*{carId}">
+        <option value="">WYBIERZ</option>
+        <option th:each="samochod : ${allCars}"
+                th:value="${samochod.id}"
+                th:utext="${samochod.model}"/>
+    </select></p>
+    <br>
+    <p><input type="submit" value="Dodaj trasę"></p>
+
+</form>
+<a href="/">Powrót do MENU</a>
+</body>
+</html>

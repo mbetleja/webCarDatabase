@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dane nowego kierowcy</title>
+    <style>
+        table, tr, th, td {
+            border:1px cornflowerblue solid;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dane</h1>
+    <table>
+    <p th:text=" 'Imię: ' + ${driver.firstName}"></p>
+    <p th:text=" 'Nazwisko: ' + ${driver.lastName}"></p>
+    </table>
+
+    <a href="/">Powrót do MENU</a>
+
+</body>
+</html>
