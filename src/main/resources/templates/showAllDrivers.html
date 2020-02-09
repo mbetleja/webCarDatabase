@@ -16,6 +16,7 @@
     <td th:text="${driver.id}"/>
     <td th:text=" 'Imię: ' +${driver.firstName}"/>
     <td th:text=" 'Nazwisko: ' +${driver.lastName}"/>
+    <td><a href="/showDriverRoutes" th:href="@{/showDriverRoutes(driverId=${driver.id})}">Pokaż trasy</a> </td>
 </tr>
 </table>
 <br>

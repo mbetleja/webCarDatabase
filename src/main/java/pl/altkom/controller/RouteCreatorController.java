@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.altkom.model.Car;
 import pl.altkom.model.Driver;
 import pl.altkom.model.Route;
@@ -55,6 +56,14 @@ public class RouteCreatorController {
         carDao.save(car);
 
         return "redirect:/";
+    }
+
+    @GetMapping(path ="/showDriverRoutes")
+    public String showRoutes(final Model model, @RequestParam(name = "driverId") Long driverId){
+        Driver driver = dao.getOne(driverId);
+        List<Route> routes =driver.getRoutes();
+        model.addAttribute("allDriverRoutes", routes);
+        return "allDriverRoutes";
     }
 
 

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wszystkie trasy kierowcy</title>
+    <style>
+        table, tr, th, td {
+            border:1px cornflowerblue solid;
+        }
+    </style>
+</head>
+<body>
+<h1>Lista tras</h1>
+<table>
+    <tr>
+        <th>Nazwa trasy</th>
+        <th>Adres początkowy</th>
+        <th>Data początkowa</th>
+        <th>Planowana godzina rozpoczęcia</th>
+        <th>Adres docelowy</th>
+        <th>Data przybycia</th>
+        <th>Planowana godzina przybycia</th>
+    </tr>
+    <tr th:each ="routes: ${allDriverRoutes}">
+        <td th:text="${routes.routeName}"/>
+        <td th:text="${routes.startAddress}"/>
+        <td th:text="${routes.startDate}"/>
+        <td th:text="${routes.plannedStartTime}"/>
+        <td th:text="${routes.endAddress}"/>
+        <td th:text="${routes.endDate}"/>
+        <td th:text="${routes.plannedEndTime}"/>
+
+    </tr>
+</table>
+<br>
+<a href="/">powrót do MENU</a>
+</body>
+</html>

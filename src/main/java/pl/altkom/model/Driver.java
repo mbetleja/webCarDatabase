@@ -33,6 +33,10 @@ public class Driver {
     public Driver() {
     }
 
+    public List<Route> getRoutes() {
+        return routes;
+    }
+
     public Long getId() {
         return id;
     }
