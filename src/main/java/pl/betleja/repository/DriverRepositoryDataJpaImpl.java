@@ -8,5 +8,9 @@ import pl.betleja.model.Driver;
 @Repository
 public interface DriverRepositoryDataJpaImpl extends JpaRepository<Driver, Long> {
 
+    public Driver findDriverByFirstName(String firstName);
+
+    public Driver findDriverByLastName(String firstName);
+
 
 }
