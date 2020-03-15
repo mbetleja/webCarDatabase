@@ -12,7 +12,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class TomTomApi {
-    private static final String KEY_FOR_TOMTOM = "U5AOrrRaKTNr4xW0fSqZt3Gyou9AJwiS";
+    private static final String KEY_FOR_TOMTOM = "W5sUg3owdr67MO2Leax8TjXqDkWMgFsJ";
     private ProcessDataFromTomTomApi process = new ProcessDataFromTomTomApi();
 
     public Route processRouteWithDataFromTomTom(Route route) throws IOException {
