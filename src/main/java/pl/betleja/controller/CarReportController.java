@@ -1,14 +1,12 @@
-package pl.altkom.controller;
+package pl.betleja.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import pl.altkom.model.CarReport;
-import pl.altkom.service.CarReportFactory;
-import javax.validation.Valid;
-
+import pl.betleja.model.CarReport;
+import pl.betleja.service.CarReportFactory;
 
 
 @Controller
@@ -35,9 +33,9 @@ public class CarReportController {
     @GetMapping(path = "/userParams")
     public String userInputParams(final Model model, @RequestParam(name = "brand") String brand,
                                   @RequestParam(name = "model") String carModel,
-                                  @RequestParam(name = "colour") String colour){
+                                  @RequestParam(name = "color") String color){
 
-        CarReport report = reportFactory.carReportByUser(brand, carModel, colour);
+        CarReport report = reportFactory.carReportByUser(brand, carModel, color);
         model.addAttribute("reportData", report);
 
         return "report";

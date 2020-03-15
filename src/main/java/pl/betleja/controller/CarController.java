@@ -1,4 +1,4 @@
-package pl.altkom.controller;
+package pl.betleja.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +8,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import pl.altkom.model.Car;
-import pl.altkom.repository.CarRepositoryDataJpaImpl;
+import pl.betleja.model.Car;
+import pl.betleja.model.Color;
+import pl.betleja.model.Route;
+import pl.betleja.repository.CarRepositoryDataJpaImpl;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -20,19 +22,25 @@ public class CarController {
     @Autowired
     private CarRepositoryDataJpaImpl carDao;
 
-    @GetMapping("/addCar")
-    public String showOptionsForm(Car car) {
+    @GetMapping("/submitNewCarForm")
+    public String showOptionsForm(@RequestParam(name = "carId", required = false) Long carId, final Model model, Car car) {
+        if(carId != null){
+            car = carDao.getOne(carId);
+            model.addAttribute(car);
+        }
+        model.addAttribute("colors", Color.values());
         return "newCarForm";
 
     }
 
     @PostMapping("/addCar")
-    public String addForm(@Valid Car car, BindingResult bindingResult) {
+    public String addForm(@Valid Car car, BindingResult bindingResult, final Model model) {
         if (bindingResult.hasErrors()){
+            model.addAttribute("colors", Color.values());
             return "newCarForm";
         }
         carDao.save(car);
-        System.out.printf("%s, %s, %s, %s %s%n", car.getBrand(), car.getModel(), car.getColour(), car.getYearOfProduction()
+        System.out.printf("%s, %s, %s, %s %s%n", car.getBrand(), car.getModel(), car.getColor(), car.getYearOfProduction()
                 , car.getVin());
         return "showNewCar";
     }
@@ -65,6 +73,13 @@ public class CarController {
             return "editCarForm";
         }
         return "showNewCar";
+    }
+    @GetMapping("/showCarAssignedRoutes")
+    public String showAssignedRoutes(@RequestParam(name = "carId") Long carId, final Model model){
+        Car car = carDao.getOne(carId);
+        List<Route> routes = car.getRoutes();
+        model.addAttribute("routes", routes);
+        return "routeToCar";
     }
 
 

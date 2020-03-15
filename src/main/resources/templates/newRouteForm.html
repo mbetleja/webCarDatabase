@@ -3,21 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Nowa trasa</title>
+
 </head>
 <body>
 <form method="post" action="#" th:object="${route}" th:action="@{/addRoute}">
     <h1>Tworzenie nowej trasy</h1>
 
     <p>Nazwa trasy: <input th:field="*{routeName}" type="text"></p>
+    <div th:if="${#fields.hasErrors('routeName')}" th:errors="*{routeName}"></div>
     <br>
-    <p>Adres początkowy: <input th:field="*{startAddress}" type="text"></p>
-    <p>Data rozpoczęcia: <input th:field="*{startDate}" type="date"></p>
-    <p>Czas rozpoczęcia: <input th:field="*{plannedStartTime}" type="time"></p>
+
+    <p>Adres początkowy (współrzędne geograficzne): <input th:field="*{startAddress}" type="text"></p>
+    <div th:if="${#fields.hasErrors('startAddress')}" th:errors="*{startAddress}"></div>
+
+    <div>Data i czas rozpoczęcia:<input th:field="*{startDateTime}" type="datetime-local"></div>
+    <div th:if="${#fields.hasErrors('startDateTime')}" th:errors="*{startDateTime}"></div>
+
     <br>
-    <p>Adres docelowy: <input th:field="*{endAddress}" type="text"></p>
-    <p>Data zakończenia: <input th:field="*{endDate}" type="date"></p>
-    <p>Czas zakończenia: <input th:field="*{plannedEndTime}" type="time"></p>
+    <p>Adres docelowy (współrzędne geograficzne): <input th:field="*{endAddress}" type="text"></p>
+    <div th:if="${#fields.hasErrors('endAddress')}" th:errors="*{endAddress}"></div>
     <br>
+
     <h1>Dodaj kierowcę</h1>
     <p><select th:field="*{driverId}">
     <option value="">WYBIERZ</option>
@@ -25,7 +31,9 @@
             th:value="${kierowca.id}"
             th:utext="${kierowca.lastName}"/>
     </select></p>
+    <div th:if="${#fields.hasErrors('driverId')}" th:errors="*{driverId}"></div>
     <br>
+
     <h1>Dodaj samochód</h1>
     <p><select th:field="*{carId}">
         <option value="">WYBIERZ</option>
@@ -33,10 +41,16 @@
                 th:value="${samochod.id}"
                 th:utext="${samochod.model}"/>
     </select></p>
+    <div th:if="${#fields.hasErrors('carId')}" th:errors="*{carId}"></div>
     <br>
     <p><input type="submit" value="Dodaj trasę"></p>
 
 </form>
 <a href="/">Powrót do MENU</a>
+<br><br>
+<p>Przykłady:</p>
+<p>51.117559,17.041687 - "Google Poland", "Bema Plaza, 50-240 Wroclaw" <br>
+    48.149222,11.537171 - "Google Germany", "Erika-Mann-Straße 33, 80636 München, Germany" <br>
+    45.486909,9.189454 - "Google Italy", "Via Federico Confalonieri, 4, 20124 Milano MI, Włochy"</p>
 </body>
 </html>

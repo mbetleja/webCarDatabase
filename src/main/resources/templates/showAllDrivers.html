@@ -12,12 +12,24 @@
 <body>
 <h1>Lista kierowców</h1>
 <table>
-<tr th:each="driver: ${driverList}">
-    <td th:text="${driver.id}"/>
-    <td th:text=" 'Imię: ' +${driver.firstName}"/>
-    <td th:text=" 'Nazwisko: ' +${driver.lastName}"/>
-    <td><a href="/showDriverRoutes" th:href="@{/showDriverRoutes(driverId=${driver.id})}">Pokaż trasy</a> </td>
-</tr>
+    <tr>
+        <th>ID</th>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Przejechany dystans (KM)</th>
+        <th>Edytuj</th>
+        <th>Pokaż przypisane trasy</th>
+        <th>Usuń</th>
+    </tr>
+    <tr th:each="driver : ${driversList}">
+        <td th:text="*{driver.id}"/>
+        <td th:text="*{driver.firstName}"/>
+        <td th:text="*{driver.lastName}"/>
+        <td th:text="*{driver.distanceTaken}"/>
+        <td><a href="#" th:href="@{/submitDriverForm(driverId=${driver.id})}">Edytuj</a></td>
+        <td><a href="#" th:href="@{/showDriverAssignedRoutes(driverId=${driver.id})}">Trasy</a></td>
+        <td><a href="#" th:href="@{/deleteDriver(driverId=${driver.id})}">Usuń</a></td>
+    </tr>
 </table>
 <br>
 <a href="/">Powrót do MENU</a>

@@ -1,9 +1,9 @@
-package pl.altkom.service;
+package pl.betleja.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.altkom.model.CarReport;
-import pl.altkom.repository.CarRepositoryDataJpaImpl;
+import pl.betleja.model.CarReport;
+import pl.betleja.repository.CarRepositoryDataJpaImpl;
 import java.time.LocalDate;
 
 @Service
@@ -36,7 +36,7 @@ public class CarReportFactory {
 
             case 4:
                 result = new CarReport("Pojazdy marki Ferrari w kolorze czerwonym",
-                        dao.getAllByBrandAndColour("Ferrari", "Czerwony"));
+                        dao.getAllByBrandAndColor("Ferrari", "Czerwony"));
 
                 break;
 
@@ -48,7 +48,7 @@ public class CarReportFactory {
 
             case 6:
                 result = new CarReport("Pojazdy marki Peugeot w kolorze innym niż srebrny",
-                        dao.getAllByBrandAndColourIsNot("Peugeot", "Srebrny"));
+                        dao.getAllByBrandAndColorIsNot("Peugeot", "Srebrny"));
 
                 break;
 
@@ -64,7 +64,7 @@ public class CarReportFactory {
     public CarReport carReportByUser(String brand, String model, String colour){
 
         CarReport carReport = new CarReport("Pojazdy o określonej marce, modelu i kolorze - wybór przez formularz",
-                dao.getAllByBrandAndModelAndColour(brand, model, colour));
+                dao.getAllByBrandAndModelAndColor(brand, model, colour));
         return carReport;
     }
 }

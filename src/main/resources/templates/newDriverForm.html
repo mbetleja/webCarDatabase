@@ -6,8 +6,14 @@
 </head>
 <body>
 <form method="post" action="#" th:object="${driver}" th:action="@{/addDriver}">
+    <input type="hidden" th:field="*{id}">
+
     <p>Imię:<input th:field="*{firstName}" type="text"></p>
+    <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Imię - ERROR!</p>
+
+
     <p>Nazwisko:<input th:field="*{lastName}" type="text"></p>
+    <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Nazwisko - ERROR!</p>
 
     <p><input type="submit"></p>
 

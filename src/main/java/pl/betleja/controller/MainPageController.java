@@ -1,4 +1,4 @@
-package pl.altkom.controller;
+package pl.betleja.controller;
 
 
 import org.springframework.stereotype.Controller;

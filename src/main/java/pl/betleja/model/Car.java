@@ -1,9 +1,11 @@
-package pl.altkom.model;
+package pl.betleja.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import pl.betleja.model.validators.CannotBeEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,25 +17,31 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotNull
     @Column(name = "MARKA")
-    @Size(min = 2, max = 20, message = "{name.correctlenght}")
+    @Size(min = 2, max = 20, message = "{carFormError.incorrectCarBrandLength}")
     private String brand;
+
     @NotNull
     @Column(name = "MODEL")
-    @Size(min = 2, max = 20, message ="{name.correctlenght}" )
+    @Size(min = 2, max = 20, message = "{carFormError.incorrectCarModelLength}")
     private String model;
-    @NotNull
+
+    @CannotBeEmpty
+    @Enumerated(EnumType.STRING)
     @Column(name = "KOLOR")
-    @Size(min = 2, max = 20, message = "{name.correctlenght}")
-    private String colour;
-    @NotNull(message = "{date.info}")
+    private Color color;
+
+    @CannotBeEmpty
+    @PastOrPresent(message = "Data produkcji nie moze byc w przyszlosci!")
     @Column(name = "DATA_PRODUKCJI")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate yearOfProduction;
+
     @NotNull
     @Column(name = "NUMER_VIN")
-    @Size(min = 17, max = 17, message = "{vin.correctlenght}")
+    @Size(min = 17, max = 17, message = "{carFormError.incorrectVinLength}")
     private String vin;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
@@ -48,22 +56,14 @@ public class Car {
     public Car() {
     }
 
-    public Car(String brand, String model, String colour, LocalDate yearOfProduction, String vin) {
+    public Car(String brand, String model, Color color, LocalDate yearOfProduction, String vin) {
         this.brand = brand;
         this.model = model;
-        this.colour = colour;
+        this.color = color;
         this.yearOfProduction = yearOfProduction;
         this.vin = vin;
     }
 
-    public Car(Long id, String brand, String model, String colour, LocalDate yearOfProduction, String vin) {
-        this.id = id;
-        this.brand = brand;
-        this.model = model;
-        this.colour = colour;
-        this.yearOfProduction = yearOfProduction;
-        this.vin = vin;
-    }
 
     public Long getId() {
         return id;
@@ -89,12 +89,12 @@ public class Car {
         this.model = model;
     }
 
-    public String getColour() {
-        return colour;
+    public Color getColor() {
+        return color;
     }
 
-    public void setColour(String colour) {
-        this.colour = colour;
+    public void setColor(Color color) {
+        this.color = color;
     }
 
     public LocalDate getYearOfProduction() {
@@ -112,4 +112,21 @@ public class Car {
     public void setVin(String vin) {
         this.vin = vin;
     }
+
+    public List<Route> getRoutes() {
+        return routes;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                ", yearOfProduction=" + yearOfProduction +
+                ", VIN='" + vin + '\'' +
+                '}';
+    }
+
 }

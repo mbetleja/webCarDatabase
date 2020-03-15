@@ -1,6 +1,8 @@
-package pl.altkom.model;
+package pl.betleja.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,11 +13,18 @@ public class Driver {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Size(min = 2, max = 20, message = "{driverFormError.incorrectFirstNameLength}")
     @Column(name = "Imię")
     private String firstName;
 
+
+    @Size(min = 2, max = 20, message = "{driverFormError.incorrectLastNameLength}")
     @Column(name = "Nazwisko")
     private String lastName;
+
+    @Column(name = "distance_taken")
+    private Long distanceTaken;
 
     public Driver(String firstName, String lastName) {
         this.firstName = firstName;
@@ -31,6 +40,7 @@ public class Driver {
     }
 
     public Driver() {
+        setDistanceTaken(Long.valueOf(0));
     }
 
     public List<Route> getRoutes() {
@@ -59,5 +69,13 @@ public class Driver {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Long getDistanceTaken() {
+        return distanceTaken;
+    }
+
+    public void setDistanceTaken(Long distanceTaken) {
+        this.distanceTaken = distanceTaken;
     }
 }

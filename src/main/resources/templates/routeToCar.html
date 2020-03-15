@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Wszystkie trasy kierowcy</title>
+    <title>Trasy przypisane do samochodu</title>
     <style>
         table, th, td {
             border: 1px solid blue;
@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-<h1>Lista tras</h1>
+<h1>Trasy przypisane do samochodu:</h1>
 <table>
     <tr>
         <th>ID</th>
@@ -24,20 +24,19 @@
         <th>Adres końcowy</th>
         <th>Odległość (KM)</th>
         <th>Planowany czas przejazdu</th>
-
     </tr>
-    <tr th:each ="routes: ${allDriverRoutes}">
+    <tr th:each="route : ${routes}">
+        <td th:text="${route.id}"/>
         <td th:text="${route.routeName}"/>
         <td th:text="${route.startDateTime}"/>
         <td th:text="${route.startAddress}"/>
         <td th:text="${route.endDateTime}"/>
         <td th:text="${route.endAddress}"/>
-        <td th:text="${route.getDistance()}"/>
-        <td th:text="${route.getTravelTime()}"/>
-
+        <td th:text="${route.distance}"/>
+        <td th:text="${route.travelTime}"/>
     </tr>
 </table>
 <br>
-<a href="/">powrót do MENU</a>
+<a href="/">Powrót do MENU</a>
 </body>
 </html>

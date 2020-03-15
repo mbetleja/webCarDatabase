@@ -1,4 +1,4 @@
-package pl.altkom;
+package pl.betleja;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

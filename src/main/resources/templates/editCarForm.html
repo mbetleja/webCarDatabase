@@ -7,18 +7,30 @@
 <body>
 <form method="post" action="#" th:object="${car}" th:action="@{/editCar}">
     <input type="hidden" th:field ="*{id}"/>
+
     <p>Marka:<input th:field="*{brand}" type="text"></p>
     <p th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}">brand error</p>
+
     <p>Model:<input th:field="*{model}" type="text"></p>
     <p th:if="${#fields.hasErrors('model')}" th:errors="*{model}">model error</p>
-    <p>Kolor:<input th:field="*{colour}" type="text"></p>
-    <p th:if="${#fields.hasErrors('colour')}" th:errors="*{colour}">colour error</p>
+
+    <p>Kolor:<input th:field="*{color}"></p>
+    <option value="">WYBIERZ</option>
+    <option th:each="tr : ${colors}"
+            th:value="${tr}"
+            th:utext="${tr.name().toLowerCase()}" />
+    <p th:if="${#fields.hasErrors('color')}" th:errors="*{color}">colour error</p>
+
     <p>Rok produkcji:<input th:field="*{yearOfProduction}" type="date"></p>
     <p th:if="${#fields.hasErrors('yearOfProduction')}" th:errors="*{yearOfProduction}">yearOfProduction error</p>
+
     <p>Numer VIN:<input th:field="*{vin}" type="text"></p>
     <p th:if="${#fields.hasErrors('vin')}" th:errors="*{vin}">vin error</p>
-    <p><input type="submit"></p>
+
+    <p><input type="submit" value="Wprowadź"></p>
 </form>
+
+<button onclick="window.location.href = '/';">Powrót do MENU</button>
 
 </body>
 </html>

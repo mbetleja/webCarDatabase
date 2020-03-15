@@ -15,9 +15,10 @@
 <tr th:each="car: ${cars}">
     <td th:text=" 'Marka: ' +${car.brand}"/>
     <td th:text=" 'Model: ' +${car.model}"/>
-    <td th:text=" 'Kolor: ' +${car.colour}"/>
+    <td th:text=" 'Kolor: ' +${car.color}"/>
     <td th:text=" 'Data produkcji: ' +${car.yearOfProduction}"/>
     <td th:text=" 'VIN: ' +${car.vin}"/>
+    <td><a href="#" th:href="@{/showCarAssignedRoutes(carId=${car.id})}">Trasy</a></td>
     <td><a href="/removeCar" th:href="@{/deleteCar(carId=${car.id})}">Usuń samochód</a> </td>
     <td><a href="/editCar" th:href="@{/editCar(carId=${car.id})}">Edytuj samochód</a> </td>
 </tr>

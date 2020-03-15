@@ -1,4 +1,4 @@
-package pl.altkom.model;
+package pl.betleja.model;
 
 import java.util.List;
 
